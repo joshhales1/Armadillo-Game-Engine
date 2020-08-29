@@ -16,8 +16,26 @@ namespace ArmadilloEngine
         }
         public void AddComponent<T>() where T : IComponent, new()
         {
-            IComponent c = new T();
-            Components.Add(c);
+            IComponent component = new T();
+            AddToComponents(component);
+        }
+
+        public void AddComponent<T>(T c)
+        {
+            if (c is IComponent)
+            {
+                IComponent component = c as IComponent;
+                AddToComponents(component);
+            } else
+            {
+                throw new Exception("ArmadilloEngine: Provided component does not implement IComponent.");
+            }
+        }
+
+        private void AddToComponents(IComponent component)
+        {
+            component.Owner = this;
+            Components.Add(component);
         }
     }
     
