@@ -1,10 +1,10 @@
 ﻿using System;
 
-namespace Armadillo_Game_Engine
+namespace ArmadilloEngine
 {
-    class Program
+    class Program // Class for testing new features as they are added.
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("Hello World!");
         }
