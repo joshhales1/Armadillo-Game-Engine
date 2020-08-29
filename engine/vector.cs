@@ -32,7 +32,6 @@ namespace ArmadilloEngine
 			y /= divisor;
 			z /= divisor;
 		}
-
 		public static Vector operator +(Vector a, Vector b) =>
 			new Vector(a.x + b.x, a.y + b.y, a.z + b.z);
 
