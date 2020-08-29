@@ -7,8 +7,10 @@ namespace ArmadilloEngine
         public Vector Position = new Vector();
         public Vector Rotation = new Vector();
         public GameObject Parent;
+        
 
         public void Execute() { }
+        public GameObject Owner { get; set; }
 
     }
 }
