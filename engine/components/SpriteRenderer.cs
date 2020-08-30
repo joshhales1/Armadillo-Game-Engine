@@ -7,10 +7,12 @@ namespace ArmadilloEngine
         public GameObject Owner { get; set; }
         public Vector Dimensions { get; private set; }
         public char[,] SpriteText { get; private set; }
-        public void Execute()
+        public void Update()
         {
             Renderer.AddSprite(this);
         }
+
+        public void Start() { }
 
         public void SetSprite(string spriteText)
         {

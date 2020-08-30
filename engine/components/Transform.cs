@@ -9,7 +9,8 @@ namespace ArmadilloEngine
         public GameObject Parent;
         
 
-        public void Execute() { }
+        public void Update() { }
+        public void Start() { }
         public GameObject Owner { get; set; }
 
     }
