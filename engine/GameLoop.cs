@@ -16,13 +16,14 @@ namespace ArmadilloEngine
 					component.Execute();
                 }
 			}
-
+			Input.PressedKey = "\0"[0];
 			Renderer.Render();
 		}
 
 		public static void Start()
         {
 			Running = true;
+			Input.Start();
 			while (Running)
             {
 				Time.OnFrame();
