@@ -25,7 +25,8 @@ namespace ArmadilloEngine
 			Running = true;
 			while (Running)
             {
-				Loop();
+				Time.OnFrame();
+				Loop();				
             }
 		}
 
@@ -39,8 +40,20 @@ namespace ArmadilloEngine
 			Objects.Add(gameObject);
         }
 
-	}
+		public static class Time
+		{
+			static DateTimeOffset LastFrame = DateTimeOffset.UtcNow;
+			public static float DeltaTime;
+			internal static void OnFrame()
+            {				
+				DateTimeOffset now = DateTimeOffset.UtcNow;
+				TimeSpan ts = now.Subtract(LastFrame);
+				DeltaTime = (float)ts.TotalSeconds;
+				LastFrame = DateTimeOffset.UtcNow;
+			}
+		}
 
+	}
 	
 
 }
