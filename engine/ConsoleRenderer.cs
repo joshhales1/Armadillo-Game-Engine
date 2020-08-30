@@ -11,27 +11,34 @@ namespace ArmadilloEngine
         static char[,] OldBuffer = new char[0, 0];
         static char[,] CurrentBuffer = new char[0, 0];
 
+        static bool SpecialRender = false;
+
         public static void Render()
         {
             OldBuffer = CurrentBuffer;
             CurrentBuffer = GenerateBuffer();
 
-            bool unmatched = false;
-            //Check if lists are same
-            if (OldBuffer.Length != CurrentBuffer.Length) unmatched = true;
-            
-            for (int x = 0; x < OldBuffer.GetLength(0); x++)
-                for (int y = 0; y < OldBuffer.GetLength(1); y++)
-                {
-                    if (OldBuffer[x, y] != CurrentBuffer[x, y])
-                    {
-                        unmatched = true;
-                        break;
-                    }
-                    if (unmatched) break;
-                }
-            if (!unmatched) return;
+            if (!SpecialRender)
+            {
+                bool unmatched = false;
+                //Check if lists are same
+                if (OldBuffer.Length != CurrentBuffer.Length) unmatched = true;
 
+                for (int x = 0; x < OldBuffer.GetLength(0); x++)
+                    for (int y = 0; y < OldBuffer.GetLength(1); y++)
+                    {
+                        if (OldBuffer[x, y] != CurrentBuffer[x, y])
+                        {
+                            unmatched = true;
+                            break;
+                        }
+                        if (unmatched) break;
+                    }
+                if (!unmatched) return;
+            } else
+            {
+                SpecialRender = false;
+            }
 
             Console.Clear();
             for (int x = 0; x < GameWindowDimensions.x; x++)
@@ -41,6 +48,11 @@ namespace ArmadilloEngine
                 Console.Write("\n");
             }
             SpritesForRender.Clear();                
+        }
+
+        public static void RequestRender()
+        {
+            SpecialRender = true;
         }
 
         static char[,] GenerateBuffer()
