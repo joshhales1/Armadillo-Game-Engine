@@ -17,22 +17,23 @@ namespace ArmadilloEngine
         public void AddComponent<T>() where T : IComponent, new()
         {
             IComponent component = new T();
-            AddToComponents(component);
+            AddComponent(component);
+            return (T) component;
         }
 
-        public void AddComponent<T>(T c)
+        public void AddNewComponent<T>(T c)
         {
             if (c is IComponent)
             {
                 IComponent component = c as IComponent;
-                AddToComponents(component);
+                AddComponent(component);
             } else
             {
                 throw new Exception("ArmadilloEngine: Provided component does not implement IComponent.");
             }
         }
 
-        private void AddToComponents(IComponent component)
+        private void AddComponent(IComponent component)
         {
             component.Owner = this;
             Components.Add(component);
