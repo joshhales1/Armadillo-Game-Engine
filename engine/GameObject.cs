@@ -14,7 +14,7 @@ namespace ArmadilloEngine
                     return (T) component;
             return default;
         }
-        public void AddComponent<T>() where T : IComponent, new()
+        public T AddComponent<T>() where T : IComponent, new()
         {
             IComponent component = new T();
             AddComponent(component);
