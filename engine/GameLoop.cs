@@ -13,7 +13,7 @@ namespace ArmadilloEngine
             {
 				foreach (IComponent component in gameObject.Components)
                 {
-					component.Execute();
+					component.Update();
                 }
 			}
 			Input.PressedKey = "\0"[0];
@@ -38,7 +38,12 @@ namespace ArmadilloEngine
 
 		public static void AddObject(GameObject gameObject)
         {
+			foreach (IComponent component in gameObject.Components)
+			{
+				component.Start();
+			}
 			Objects.Add(gameObject);
+
         }
 
 		public static class Time

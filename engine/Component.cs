@@ -4,7 +4,8 @@ namespace ArmadilloEngine
 {
 	public interface IComponent
     {
-        void Execute();
+        void Update();
+        void Start();
         GameObject Owner { get; set; }
     }
 
