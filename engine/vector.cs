@@ -47,5 +47,10 @@ namespace ArmadilloEngine
 		public static Vector Right = new Vector(1, 0);
 		public static Vector Left = new Vector(-1, 0);
 		public static Vector Down = new Vector(0, -1);
+
+		public static Vector RotateToWorld(Vector a)
+		{
+			return new Vector(a.x, a.y * -1, a.z);
+		}
 	}
 }
