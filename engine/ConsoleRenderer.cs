@@ -8,6 +8,8 @@ namespace ArmadilloEngine
         static List<SpriteRenderer> SpritesForRender = new List<SpriteRenderer>();
         public static Vector GameWindowDimensions = new Vector(20, 20);
 
+        public static byte RenderMode = DoubleChar;
+
         static char[,] OldBuffer = new char[0, 0];
         static char[,] CurrentBuffer = new char[0, 0];
 
@@ -41,10 +43,13 @@ namespace ArmadilloEngine
             }
 
             Console.Clear();
-            for (int x = 0; x < GameWindowDimensions.x; x++)
+            for (int y = 0; y < GameWindowDimensions.y; y++)                
             {
-                for (int y = 0; y < GameWindowDimensions.y; y++)
+                for (int x = 0; x < GameWindowDimensions.x; x++)
+                {
                     Console.Write(CurrentBuffer[x, y]);
+                    if (RenderMode == DoubleChar) Console.Write(CurrentBuffer[x, y]);
+                }
                 Console.Write("\n");
             }
             SpritesForRender.Clear();                
@@ -66,6 +71,9 @@ namespace ArmadilloEngine
                 for (int x = 0; x < dimensions.x; x++)
                     for (int y = 0; y < dimensions.y; y++)
                     {
+                        int xPos = (int)offset.x + x;
+                        int yPos = (int)offset.y + y;
+                        if (xPos > GameWindowDimensions.x - 1 || xPos < 0 || yPos > GameWindowDimensions.y - 1 || yPos < 0) continue;
                         grid[(int)offset.x + x, (int)offset.y + y] = sprite.SpriteText[x, y];
                     }
                         
@@ -75,6 +83,7 @@ namespace ArmadilloEngine
 
         public static void AddSprite(SpriteRenderer sprite) => SpritesForRender.Add(sprite);
 
-
+        public static byte SingleChar = 0;
+        public static byte DoubleChar = 0;
     }
 }
