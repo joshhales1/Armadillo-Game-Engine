@@ -19,8 +19,10 @@ namespace ArmadilloEngine
 
 		public static void Start()
         {
-			Running = true;
+			Running = true;	
+			
 			Input.Start();
+			Renderer.Start();
 			while (Running)
             {
 				Time.OnFrame();
