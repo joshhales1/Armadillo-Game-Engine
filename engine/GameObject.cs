@@ -5,27 +5,28 @@ namespace ArmadilloEngine
 {
 	public class GameObject
 	{
-        public List<IComponent> Components = new List<IComponent>();
+        public List<Component> Components = new List<Component>();
+        public string DisplayName = "Unnamed";
 
-        public T GetComponent<T>()
+        public T GetComponent<T>() where T : Component, new()
         {
-            foreach (IComponent component in Components)
-                if (component is T)
+            foreach (Component component in Components)
+                if (component is T && component is Component)
                     return (T) component;
             return default;
         }
-        public T AddComponent<T>() where T : IComponent, new()
+        public T AddComponent<T>() where T : Component, new()
         {
-            IComponent component = new T();
+            Component component = new T();
             AddComponent(component);
             return (T) component;
         }
 
         public void AddNewComponent<T>(T c)
         {
-            if (c is IComponent)
+            if (c is Component)
             {
-                IComponent component = c as IComponent;
+                Component component = c as Component;
                 AddComponent(component);
             } else
             {
@@ -33,7 +34,7 @@ namespace ArmadilloEngine
             }
         }
 
-        private void AddComponent(IComponent component)
+        private void AddComponent(Component component)
         {
             component.Owner = this;
             Components.Add(component);

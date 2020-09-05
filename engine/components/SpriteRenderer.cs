@@ -2,17 +2,15 @@
 
 namespace ArmadilloEngine
 {
-    class SpriteRenderer : IComponent
+    class SpriteRenderer : Component
     {
-        public GameObject Owner { get; set; }
         public Vector Dimensions { get; private set; }
         public char[,] SpriteText { get; private set; }
-        public void Update()
+        protected override void Update()
         {
             Renderer.AddSprite(this);
+            
         }
-
-        public void Start() { }
 
         public void SetSprite(string spriteText)
         {
@@ -36,6 +34,24 @@ namespace ArmadilloEngine
                     
 
             return sprite;
+        }
+
+        class ReplaceChar
+        {
+            Vector Position;
+            char NewChar;
+
+            public ReplaceChar(Vector position, char newChar)
+            {
+                Position = position;
+                NewChar = newChar;
+            }
+
+            public void Swap()
+            {
+                Console.SetCursorPosition((int)Position.x, (int)Position.y);
+                Console.Write("\b" + NewChar);
+            }
         }
     }
 

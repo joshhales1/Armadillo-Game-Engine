@@ -10,12 +10,9 @@ namespace ArmadilloEngine
 		static void Loop()
         {
 			foreach (GameObject gameObject in Objects)
-            {
-				foreach (IComponent component in gameObject.Components)
-                {
-					component.Update();
-                }
-			}
+				foreach (Component component in gameObject.Components)                
+					Component.UpdateComponent(component);                
+			
 			Input.PressedKey = "\0"[0];
 			Renderer.Render();
 		}
@@ -38,12 +35,9 @@ namespace ArmadilloEngine
 
 		public static void AddObject(GameObject gameObject)
         {
-			foreach (IComponent component in gameObject.Components)
-			{
-				component.Start();
-			}
+			foreach (Component component in gameObject.Components)
+				Component.StartComponent(component);			
 			Objects.Add(gameObject);
-
         }
 
 		public static class Time

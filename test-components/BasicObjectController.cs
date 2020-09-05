@@ -2,17 +2,16 @@
 
 namespace ArmadilloEngine
 {
-	public class ObjectController : IComponent
+	public class ObjectController : Component
 	{
-		public GameObject Owner { get; set; }
 		Transform transform;
 
-		public void Start()
-        {
+		protected override void Start()
+		{
 			transform = Owner.GetComponent<Transform>();
-        }
+		}
 
-		public void Update()
+		protected override void Update()
         {
 			Vector NextMove = new Vector();
 			if (Input.PressedKey == char.Parse("w")) NextMove = Vector.Up;
