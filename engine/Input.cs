@@ -19,6 +19,8 @@ namespace ArmadilloEngine
             {
 				PressedKey = Console.ReadKey().KeyChar;
 				Renderer.RequestRender();
+				PressedKey = Console.ReadKey(true).KeyChar;				
+				
 			}			
         }
 
