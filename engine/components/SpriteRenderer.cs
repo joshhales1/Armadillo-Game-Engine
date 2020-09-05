@@ -35,24 +35,6 @@ namespace ArmadilloEngine
 
             return sprite;
         }
-
-        class ReplaceChar
-        {
-            Vector Position;
-            char NewChar;
-
-            public ReplaceChar(Vector position, char newChar)
-            {
-                Position = position;
-                NewChar = newChar;
-            }
-
-            public void Swap()
-            {
-                Console.SetCursorPosition((int)Position.x, (int)Position.y);
-                Console.Write("\b" + NewChar);
-            }
-        }
     }
 
 
