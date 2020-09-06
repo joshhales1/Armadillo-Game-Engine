@@ -1,12 +1,23 @@
 ﻿using System;
+using ArmadilloEngine;
 
-namespace ArmadilloEngine
+class Program 
 {
-    class Program // Class for testing new features as they are added.
+    static void Main()
     {
-        static void Main()
-        {
-            Console.WriteLine("Hello World!");
-        }
+        
+
+        GameObject player = new GameObject();
+        Transform tr = player.AddComponent<Transform>();
+        tr.Position = new Vector(5, 5);
+
+        SpriteRenderer sr = player.AddComponent<SpriteRenderer>();
+        sr.SetSprite("xxxxoxxxx");
+
+        player.AddComponent<ObjectController>();
+
+        Game.AddObject(player);
+        Game.Start();
     }
 }
+
