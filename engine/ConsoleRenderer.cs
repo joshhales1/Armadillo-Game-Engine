@@ -45,6 +45,22 @@ namespace ArmadilloEngine
                         }
                      }
                 }
+
+            //Debug
+            string newloopMessage = Debug.RecentMessage;
+            LoopDebugMessage = newloopMessage.PadRight(
+                newloopMessage.Length < LoopDebugMessage.Length ? LoopDebugMessage.Length : 0,
+                " "[0]);
+
+          
+            for (int i = 0; i < LoopDebugMessage.Length; i++)
+            {
+                Console.SetCursorPosition(i+1, 0);
+                if (i > Console.BufferWidth + 1)
+                    break;
+                else
+                    Console.Write("\b" + LoopDebugMessage[i]);
+            }
         }
 
         static char[,] GenerateBuffer()
