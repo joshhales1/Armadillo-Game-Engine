@@ -64,9 +64,8 @@ namespace ArmadilloEngine
         }
 
         static char[,] GenerateBuffer()
-        {
+        {            
             char[,] grid = BufferTemplate();
-
             foreach (SpriteRenderer sprite in SpritesForRender)
             {
                 Vector offset = sprite.Owner.GetComponent<Transform>().Position;
