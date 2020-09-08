@@ -43,10 +43,7 @@ namespace ArmadilloEngine
 			Renderer.Render();
 		}		
 
-		public static void Stop()
-        {
-			Running = false;
-        }
+		public static void Stop() => Running = false;
 
 		public static void AddObject(GameObject gameObject)
         {
