@@ -6,19 +6,23 @@ namespace ArmadilloEngine
     static class Renderer
     {
         static List<SpriteRenderer> SpritesForRender = new List<SpriteRenderer>();
-        public static byte SingleChar = 1;
-        public static byte DoubleChar = 2;
+
+        public static readonly byte SingleChar = 1;
+        public static readonly byte DoubleChar = 2;
 
         public static byte RenderMode = DoubleChar;
+        
+        static char[,] OldBuffer;
+        static char[,] CurrentBuffer;
 
-        static char[,] OldBuffer = BufferTemplate();
-        static char[,] CurrentBuffer = BufferTemplate();
+        static string LoopDebugMessage = "";
 
         public static void Start()
-        {
-            Console.WriteLine(OldBuffer[10, 10]);
+        {            
             Console.CursorVisible = false;
-            SetGameWindowSize(new Vector(16, 16));
+            SetGameWindowSize(Game.WindowDimensions);
+            OldBuffer = GenerateBuffer();
+            CurrentBuffer = GenerateBuffer();
         }
 
         public static void Render()
@@ -26,11 +30,12 @@ namespace ArmadilloEngine
             OldBuffer = CurrentBuffer;
             CurrentBuffer = GenerateBuffer();
 
-            for (int x = 0; x < OldBuffer.GetLength(0); x++)
-                for (int y = 0; y < OldBuffer.GetLength(1); y++)
+            //Game
+            for (int x = 0; x < CurrentBuffer.GetLength(0); x++)
+                for (int y = 0; y < CurrentBuffer.GetLength(1); y++)
                 {
-                    if (OldBuffer[x, y] != CurrentBuffer[x, y])
-                    {
+                     if (OldBuffer[x, y] != CurrentBuffer[x, y])
+                     {
                         Console.SetCursorPosition(x * RenderMode, y);
                         Console.Write("\b" + CurrentBuffer[x, y]);
                         if (RenderMode == DoubleChar)
@@ -38,7 +43,7 @@ namespace ArmadilloEngine
                             Console.SetCursorPosition(x * 2 + 1, y);
                             Console.Write("\b" + CurrentBuffer[x, y]);
                         }
-                    }
+                     }
                 }
         }
 
@@ -67,10 +72,7 @@ namespace ArmadilloEngine
         public static void SetGameWindowSize(Vector a)
         {
             if (a.x < 16 || a.y < 16)
-            {
-                Debug.Log("Size must be larger than 15");
-                return;
-            }                
+                throw new ArmadilloEngineException("Console window dimensions cannot be smaller than 16.");
 
             Console.SetWindowSize(1, 1);
             Console.SetBufferSize((int)a.x * RenderMode, (int)a.y);
