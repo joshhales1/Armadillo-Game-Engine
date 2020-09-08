@@ -84,7 +84,7 @@ namespace ArmadilloEngine
             return grid;
         }
 
-        public static void SetGameWindowSize(Vector a)
+        static void SetGameWindowSize(Vector a)
         {
             if (a.x < 16 || a.y < 16)
                 throw new ArmadilloEngineException("Console window dimensions cannot be smaller than 16.");
