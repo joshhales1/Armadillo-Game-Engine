@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 namespace ArmadilloEngine
-{
-	
-	public static class Debug
+{	
+	static class Debug
 	{
 		static bool HasStarted;
 		public static string RecentMessage = "";

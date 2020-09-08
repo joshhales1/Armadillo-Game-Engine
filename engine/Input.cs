@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Threading;
-using System.Collections.Generic;
 namespace ArmadilloEngine
 {
-	public static class Input
+	static class Input
 	{
 		public static char PressedKey;
 		public static void Start()
