@@ -2,36 +2,28 @@
 
 namespace ArmadilloEngine
 {
-    class SpriteRenderer : Component
+    public class SpriteRenderer : Component
     {
         public Vector Dimensions { get; private set; }
         public char[,] SpriteText { get; private set; }
-        protected override void Update()
-        {
-            Renderer.AddSprite(this);
-            
-        }
+        protected override void Update() => Renderer.AddSprite(this); 
 
-        public void SetSprite(string spriteText)
+        public void SetSprite(char[,] sprite)
         {
-            char[,] sprite = StringToSpriteText(spriteText);
             SpriteText = sprite;
-            Dimensions = new Vector(sprite.Length, sprite.Length) / (float)Math.Sqrt(sprite.Length);
+            Dimensions = new Vector(sprite.GetLength(0), sprite.GetLength(1));
         }
 
-        public static char[,] StringToSpriteText(string str)
+        public static char[,] StringToSpriteText(string str, int width, int height)
         {
-            int size = (int)Math.Sqrt(str.Length);
-
-            char[,] sprite = new char[size, size];
+            char[,] sprite = new char[width, height];
             int z = 0;
-            for (int x = 0; x < size; x++)
-                for (int y = 0; y < size; y++)
+            for (int x = 0; x < width; x++)
+                for (int y = 0; y < height; y++)
                 {
                     sprite[x, y] = str[z];
                     z++;
-                }
-                    
+                }                   
 
             return sprite;
         }
