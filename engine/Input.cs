@@ -8,7 +8,6 @@ namespace ArmadilloEngine
 		public static char PressedKey;
 		public static void Start()
         {
-			Console.WriteLine("Starting input...");
 			ThreadStart inputThreadStart = new ThreadStart(ReadInputThread);
 			Thread inputThread = new Thread(inputThreadStart);
 			inputThread.Start();
@@ -16,11 +15,8 @@ namespace ArmadilloEngine
 		static void ReadInputThread()
         {
 			while (true)
-            {
-				PressedKey = Console.ReadKey(true).KeyChar;				
-				
-			}			
-        }
+				PressedKey = Console.ReadKey(true).KeyChar;
+		}
 
 	}
 }
