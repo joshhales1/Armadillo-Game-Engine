@@ -28,6 +28,4 @@ namespace ArmadilloEngine
             return sprite;
         }
     }
-
-
 }
