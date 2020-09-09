@@ -16,6 +16,7 @@ namespace ArmadilloEngine
 
 			Running = true;
 
+			Debug.Start();
 			Input.Start();
 			Renderer.Start();
 
@@ -24,6 +25,7 @@ namespace ArmadilloEngine
 				Time.OnFrame();
 				Loop();
 			}
+			Debug.Log("Session ended cleanly");
 			Environment.Exit(0);
 		}
 
