@@ -9,6 +9,7 @@ namespace ArmadilloEngine
         {
 			ThreadStart inputThreadStart = new ThreadStart(ReadInputThread);
 			Thread inputThread = new Thread(inputThreadStart);
+			inputThread.Name = "Input Thread";
 			inputThread.Start();
         }
 		static void ReadInputThread()
