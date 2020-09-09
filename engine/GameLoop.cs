@@ -19,19 +19,14 @@ namespace ArmadilloEngine
 			Input.Start();
 			Renderer.Start();
 
-			ThreadStart gameLoopThreadStart = new ThreadStart(TrueStart);
-			Thread gameLoopThread = new Thread(gameLoopThreadStart);
-			gameLoopThread.Start();
-		}
-
-		private static void TrueStart()
-		{
 			while (Running)
 			{
 				Time.OnFrame();
 				Loop();
 			}
+			Environment.Exit(0);
 		}
+
 
 		static void Loop()
         {
