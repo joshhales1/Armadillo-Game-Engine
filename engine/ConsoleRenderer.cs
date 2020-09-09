@@ -31,20 +31,26 @@ namespace ArmadilloEngine
             CurrentBuffer = GenerateBuffer();
 
             //Game
-            for (int x = 0; x < CurrentBuffer.GetLength(0); x++)
-                for (int y = 0; y < CurrentBuffer.GetLength(1); y++)
-                {
-                     if (OldBuffer[x, y] != CurrentBuffer[x, y])
-                     {
-                        Console.SetCursorPosition(x * RenderMode, y);
-                        Console.Write("\b" + CurrentBuffer[x, y]);
-                        if (RenderMode == DoubleChar)
+            try
+            {
+                for (int x = 0; x < CurrentBuffer.GetLength(0); x++)
+                    for (int y = 0; y < CurrentBuffer.GetLength(1); y++)
+                    {
+                        if (OldBuffer[x, y] != CurrentBuffer[x, y])
                         {
-                            Console.SetCursorPosition(x * 2 + 1, y);
+                            Console.SetCursorPosition(x * RenderMode, y);
                             Console.Write("\b" + CurrentBuffer[x, y]);
+                            if (RenderMode == DoubleChar)
+                            {
+                                Console.SetCursorPosition(x * 2 + 1, y);
+                                Console.Write("\b" + CurrentBuffer[x, y]);
+                            }
                         }
-                     }
-                }
+                    }
+            } catch (System.IndexOutOfRangeException)
+            {
+                throw new ArmadilloEngineException("Do not manually resize the game window");
+            }
 
             //Debug
             string newloopMessage = Debug.RecentMessage;
