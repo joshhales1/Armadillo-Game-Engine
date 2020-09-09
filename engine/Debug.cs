@@ -11,7 +11,7 @@ namespace ArmadilloEngine
 			if (!HasStarted)
 				StartDebug();
 			File.WriteAllText("log.txt", $"{File.ReadAllText("log.txt")}[{DateTime.Now.ToString()}] {s}\n");
-			RecentMessage = s;
+			RecentMessage = "Debug: " + s;
 		}
 
 		public static void Warn(string s)
