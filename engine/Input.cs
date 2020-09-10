@@ -4,6 +4,9 @@ namespace ArmadilloEngine
 {
 	static class Input
 	{
+		/// <summary>
+		/// The key currently pressed by the user.
+		/// </summary>
 		public static char PressedKey;
 		public static void Start()
         {

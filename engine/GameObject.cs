@@ -72,6 +72,9 @@ namespace ArmadilloEngine
             Components.Add(component);
         }
 
+        /// <summary>
+        /// Destroys the GameObject and removes it from the game.
+        /// </summary>
         public void Dispose()
         {
             Game.RemoveObject(this);
