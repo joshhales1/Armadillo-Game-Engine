@@ -2,37 +2,39 @@
 using System.Collections.Generic;
 namespace ArmadilloEngine
 {
-	static class Game
+	public static partial class Game
 	{
-		static List<GameObject> Objects = new List<GameObject>();
+		static List<GameObject> Objects = new List<GameObject>(); // Objects currently active in the scene.
 
+		// Objects are added to these lists for removal or addition at the end the Update() loop.
+		// Enumeration were caused by directly editing Objects by scripts in Components		
 		static List<GameObject> ObjectsToAdd = new List<GameObject>();
 		static List<GameObject> ObjectsToRemove = new List<GameObject>();
+		
 		static bool Running;
-		public static Vector WindowDimensions { get; private set; }
-
-		public static void Start(int xHeight = 20, int yHeight = 20)
+		
+		public static void Start(int xHeight = 20, int yHeight = 20, int renderMode = 2)
 		{
-			WindowDimensions = new Vector(xHeight, yHeight);
-
 			Running = true;
-
+			
 			Debug.Start();
 			Input.Start();
-			Renderer.Start();
+			Renderer.Start(new Vector(xHeight, yHeight), renderMode);
 
 			while (Running)
 			{
 				Time.OnFrame();
 				Loop();
 			}
-			Debug.Log("Session ended cleanly");
+			Debug.Log("Session ended cleanly.");
 			Environment.Exit(0);
 		}
 
+
+		public static void Stop() => Running = false;
+
 		static void Loop()
-		{
-			
+		{			
 			foreach (GameObject gameObject in Objects)
 				foreach (Component component in gameObject.Components)                
 					Component.UpdateComponent(component);
@@ -48,10 +50,8 @@ namespace ArmadilloEngine
 
 			Input.PressedKey = "\0"[0];
 			Renderer.Render();
-
 		}		
 
-		public static void Stop() => Running = false;
 
 		public static void AddObject(GameObject gameObject)
         {
