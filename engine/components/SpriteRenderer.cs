@@ -2,7 +2,7 @@
 
 namespace ArmadilloEngine
 {
-    public class SpriteRenderer : Component
+    class SpriteRenderer : Component
     {
         public Vector Dimensions { get; private set; }
         public char[,] SpriteText { get; private set; }
