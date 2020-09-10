@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading;
 namespace ArmadilloEngine
 {
 	public static class Game
 	{
 		static List<GameObject> Objects = new List<GameObject>();
+
+		static List<GameObject> ObjectsToAdd = new List<GameObject>();
+		static List<GameObject> ObjectsToRemove = new List<GameObject>();
 		static bool Running;
 		public static Vector WindowDimensions { get; private set; }
-
 
 		public static void Start(int xHeight = 20, int yHeight = 20)
 		{
@@ -31,13 +32,24 @@ namespace ArmadilloEngine
 
 
 		static void Loop()
-        {
+		{
+			
 			foreach (GameObject gameObject in Objects)
 				foreach (Component component in gameObject.Components)                
-					Component.UpdateComponent(component);                
-			
+					Component.UpdateComponent(component);
+
+			foreach (GameObject gameObject in ObjectsToAdd)
+				Objects.Add(gameObject);
+
+			foreach (GameObject gameObject in ObjectsToRemove)
+				Objects.Remove(gameObject);
+
+			ObjectsToAdd.Clear();
+			ObjectsToRemove.Clear();
+
 			Input.PressedKey = "\0"[0];
 			Renderer.Render();
+
 		}		
 
 		public static void Stop() => Running = false;
@@ -46,7 +58,15 @@ namespace ArmadilloEngine
         {
 			foreach (Component component in gameObject.Components)
 				Component.StartComponent(component);			
-			Objects.Add(gameObject);
+			ObjectsToAdd.Add(gameObject);
+        }
+
+		public static void RemoveObject(GameObject gameObject)
+        {
+			if (Objects.Contains(gameObject))
+				ObjectsToRemove.Add(gameObject);
+			else
+				Debug.Warn($"Cannot remove {gameObject.DisplayName} because it is not in the game.");
         }
 
 		public static class Time
