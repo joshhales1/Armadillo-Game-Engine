@@ -4,7 +4,6 @@ namespace ArmadilloEngine
 {	
 	static class Debug
 	{
-		static bool HasStarted;
 		public static string RecentMessage = "";
 
 		/// <summary>
@@ -38,7 +37,6 @@ namespace ArmadilloEngine
 		public static void Start()
         {
 			File.WriteAllText("log.txt", "");
-			HasStarted = true;
 		}
 	}
 }
