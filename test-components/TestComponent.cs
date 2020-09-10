@@ -10,6 +10,5 @@ public class Test : Component
 
     protected override void Update()
     {
-        Debug.Log("hello");
     }
 }
