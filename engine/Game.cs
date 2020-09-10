@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 namespace ArmadilloEngine
 {
-	public static class Game
+	static class Game
 	{
 		static List<GameObject> Objects = new List<GameObject>();
 
@@ -29,7 +29,6 @@ namespace ArmadilloEngine
 			Debug.Log("Session ended cleanly");
 			Environment.Exit(0);
 		}
-
 
 		static void Loop()
 		{
