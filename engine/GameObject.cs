@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ArmadilloEngine
 {
-	public class GameObject
+	public class GameObject : IDisposable
 	{
         public List<Component> Components = new List<Component>();
         public string DisplayName = "Unnamed object";
@@ -70,6 +70,12 @@ namespace ArmadilloEngine
         {
             component.Owner = this;
             Components.Add(component);
+        }
+
+        public void Dispose()
+        {
+            Game.RemoveObject(this);
+            GC.SuppressFinalize(this);
         }
     }
     
