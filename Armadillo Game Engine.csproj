@@ -6,4 +6,8 @@
     <RootNamespace>Armadillo_Game_Engine</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="example-games\" />
+  </ItemGroup>
+
 </Project>
