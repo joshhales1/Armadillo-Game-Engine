@@ -30,7 +30,6 @@ namespace ArmadilloEngine
 			Environment.Exit(0);
 		}
 
-
 		public static void Stop() => Running = false;
 
 		static void Loop()
@@ -40,10 +39,11 @@ namespace ArmadilloEngine
                 {
 					Component.UpdateComponent(component);
 
+					//Special components
 					if (component is SpriteRenderer)
-                    {
 						Renderer.AddSprite(component as SpriteRenderer);
-                    }
+					else if (component is BoxCollider)
+						Collision.
 				}            
 					
 
