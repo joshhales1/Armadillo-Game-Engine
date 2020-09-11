@@ -27,10 +27,5 @@ namespace ArmadilloEngine
 			
 		}
 	}
-
-	public class Collision
-	{
-
-	}
 }
 
