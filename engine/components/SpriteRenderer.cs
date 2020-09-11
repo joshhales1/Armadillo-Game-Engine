@@ -6,7 +6,6 @@ namespace ArmadilloEngine
     {
         public Vector Dimensions { get; private set; }
         public char[,] SpriteText { get; private set; }
-        protected override void Update() => Renderer.AddSprite(this); 
 
         public void SetSprite(char[,] sprite)
         {

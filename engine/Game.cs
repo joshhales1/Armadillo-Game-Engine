@@ -36,8 +36,16 @@ namespace ArmadilloEngine
 		static void Loop()
 		{			
 			foreach (GameObject gameObject in Objects)
-				foreach (Component component in gameObject.Components)                
+				foreach (Component component in gameObject.Components)
+                {
 					Component.UpdateComponent(component);
+
+					if (component is SpriteRenderer)
+                    {
+						Renderer.AddSprite(component as SpriteRenderer);
+                    }
+				}            
+					
 
 			foreach (GameObject gameObject in ObjectsToAdd)
 				Objects.Add(gameObject);
