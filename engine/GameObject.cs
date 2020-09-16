@@ -12,7 +12,7 @@ namespace ArmadilloEngine
         /// Create a new GameObject with a Transform.
         /// </summary>
         /// <param name="bare">If True, a Transform component will not be added.</param>
-        public GameObject(bool bare, string name = "Unnamed object")
+        public GameObject(bool bare = false, string name = "Unnamed object")
         {
             if (bare) return;
             DisplayName = name;
