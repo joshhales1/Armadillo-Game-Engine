@@ -33,19 +33,21 @@ namespace ArmadilloEngine
 		public static void Stop() => Running = false;
 
 		static void Loop()
-		{			
+		{
 			foreach (GameObject gameObject in Objects)
 				foreach (Component component in gameObject.Components)
-                {
-					Component.UpdateComponent(component);
-
-					//Special components
+                {				
 					if (component is SpriteRenderer)
 						Renderer.AddSprite(component as SpriteRenderer);
 					else if (component is BoxCollider)
-						Collision.
-				}            
-					
+                    {
+						Collisions.AddCollider(component as BoxCollider);
+					}
+					Component.UpdateComponent(component);
+				}
+
+			Collisions.TestColliders();
+			Collisions.ShiftTransforms();
 
 			foreach (GameObject gameObject in ObjectsToAdd)
 				Objects.Add(gameObject);

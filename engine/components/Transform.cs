@@ -6,5 +6,6 @@ namespace ArmadilloEngine
     {
         public Vector Position = new Vector();
         public Vector Rotation = new Vector();
+        public Vector LastSafePosition = new Vector();
     }
 }
