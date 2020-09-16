@@ -10,11 +10,11 @@ class Program
 {
     static void Main()
     {
-        GameObject gameObject = new GameObject(); // Create a new game object.
+        GameObject gameObject = new GameObject(); // Create a new GameObjects.
         Transform transform = gameObject.AddComponent<Transform>(); // Give it a Transform component. 
         transform.Position = new Vector(5, 5); // Set its starting position.
 
-        SpriteRenderer spriteRenderer = gameObject.AddComponent<SpriteRenderer>(); // Add a sprite renderer component.
+        SpriteRenderer spriteRenderer = gameObject.AddComponent<SpriteRenderer>(); // Add a Sprite Renderer component.
         string spriteString = "xxxxoxxxx"; // The string used for the sprite. It is 3x3 so the string would be 9 letters long.
 
         /* 
@@ -28,13 +28,14 @@ class Program
          xxxxxx
          xxooxx
          xxxxxx
-         */ 
+         */
 
-        spriteRenderer.SetSprite(SpriteRenderer.StringToSpriteText(spriteString, 3, 3)); // Set the sprite to the string
+        char[,] spriteArray = SpriteRenderer.StringToSpriteText(spriteString, 3, 3); // Turn the string into an array of characters.  
+        spriteRenderer.SetSprite(spriteArray); // Set the sprite to the array.
 
-        gameObject.AddComponent<ObjectController>(); // Add another component. Provides basic control over an object.
+        gameObject.AddComponent<ObjectController>(); // Add another component. Provides basic control over a GameObject with WASD.
 
-        Game.AddObject(gameObject); // Add it to the game.
+        Game.AddObject(gameObject); // Add the GameObject to the game.
 
         Game.Start(30, 30); //Starts the game. Parameters 1 and 2 are the window size. The third is the render mode.
         
