@@ -21,6 +21,11 @@ namespace ArmadilloEngine
 				PressedKey = Console.ReadKey(true).KeyChar;
 		}
 
+		public static void Flush()
+        {
+			PressedKey = "\0"[0];
+        }
+
 	}
 }
 

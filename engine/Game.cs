@@ -68,7 +68,7 @@ namespace ArmadilloEngine
 			ObjectsToAdd.Clear();
 			ObjectsToRemove.Clear();
 
-			Input.PressedKey = "\0"[0];
+			Input.Flush();
 			Renderer.Render();
 		}
 
