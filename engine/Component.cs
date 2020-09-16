@@ -15,7 +15,16 @@ namespace ArmadilloEngine
         /// </summary>        
         protected virtual void Start() { }
 
+        /// <summary>
+        /// Update a component out of the usual game loop.
+        /// </summary>
+        /// <param name="component">Component to update.</param>
         public static void UpdateComponent(Component component) => component.Update();
+
+        /// <summary>
+        /// Start a component again.
+        /// </summary>
+        /// <param name="component">Component to update.</param>
         public static void StartComponent(Component component) => component.Start();
     }
 

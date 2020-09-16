@@ -9,6 +9,18 @@ namespace ArmadilloEngine
         public string DisplayName = "Unnamed object";
 
         /// <summary>
+        /// Create a new GameObject with a Transform.
+        /// </summary>
+        /// <param name="bare">If True, a Transform component will not be added.</param>
+        public GameObject(bool bare, string name = "Unnamed object")
+        {
+            if (bare) return;
+            DisplayName = name;
+            AddComponent<Transform>();
+
+        }
+
+        /// <summary>
         /// Returns the first Component of the specified type.
         /// </summary>
         /// <typeparam name="T">The class of Component. E.g. "Transform".</typeparam>

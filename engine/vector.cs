@@ -48,6 +48,11 @@ namespace ArmadilloEngine
 		public static Vector Left = new Vector(-1, 0);
 		public static Vector Down = new Vector(0, -1);
 
+		/// <summary>
+		/// Rotates a vector drawn from the bottom right of the screen to the top right.
+		/// </summary>
+		/// <param name="a"></param>
+		/// <returns></returns>
 		public static Vector RotateToWorld(Vector a)
 		{
 			return new Vector(a.x, a.y * -1, a.z);
