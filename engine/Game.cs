@@ -21,6 +21,11 @@ namespace ArmadilloEngine
 		/// <param name="renderMode">Whether to use single render mode or double render mode.</param>
 		public static void Start(int xwidth = 20, int yHeight = 20, int renderMode = 2)
 		{
+			if (Running)
+            {
+				Debug.Warn("Cannot start the game. Game is already running");
+				return;
+            }
 			Running = true;
 			
 			Debug.Start();
