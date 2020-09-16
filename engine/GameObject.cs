@@ -24,13 +24,17 @@ namespace ArmadilloEngine
         /// Returns the first Component of the specified type.
         /// </summary>
         /// <typeparam name="T">The class of Component. E.g. "Transform".</typeparam>
+        /// <param name="addIfNotPresent">Choose whether or not to add a new component if it doesn't exist.</param>
         /// <returns>The first Component of the specified type.</returns>
-        public T GetComponent<T>() where T : Component, new()
+        public T GetComponent<T>(bool addIfNotPresent = true) where T : Component, new()
         {
             foreach (Component component in Components)
                 if (component is T && component is Component)
                     return (T) component;
-            return default;
+            if (addIfNotPresent)
+                return AddComponent<T>();
+            else
+                return default;
         }
 
         /// <summary>
@@ -69,6 +73,7 @@ namespace ArmadilloEngine
         public void RemoveComponent<T>(T c)
         {
             Component component = c as Component;
+            
             if (Components.Contains(component))
             {
                 Components.Remove(component);

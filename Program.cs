@@ -10,8 +10,8 @@ class Program
 {
     static void Main()
     {
-        GameObject gameObject = new GameObject(); // Create a new GameObjects.
-        Transform transform = gameObject.AddComponent<Transform>(); // Give it a Transform component. 
+        GameObject gameObject = new GameObject(); // Create a new GameObjects. By giving no arguments a Transform component is automatically added.
+        Transform transform = gameObject.GetComponent<Transform>(); // Get the Transform component for us to work with.
         transform.Position = new Vector(5, 5); // Set its starting position.
 
         SpriteRenderer spriteRenderer = gameObject.AddComponent<SpriteRenderer>(); // Add a Sprite Renderer component.
