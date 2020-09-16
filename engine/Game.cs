@@ -25,7 +25,7 @@ namespace ArmadilloEngine
 			
 			Debug.Start();
 			Input.Start();
-			Renderer.Start(new Vector(xHeight, yHeight), renderMode);
+			Renderer.Start(new Vector(xwidth, yHeight), renderMode);
 
 			while (Running)
 			{
