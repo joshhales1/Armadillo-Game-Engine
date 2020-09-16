@@ -42,8 +42,6 @@ namespace ArmadilloEngine
 					//Special components
 					if (component is SpriteRenderer)
 						Renderer.AddSprite(component as SpriteRenderer);
-					else if (component is BoxCollider)
-						Collision.
 				}            
 					
 
