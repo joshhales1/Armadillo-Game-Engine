@@ -7,7 +7,7 @@ namespace ArmadilloEngine
 		/// <summary>
 		/// The key currently pressed by the user.
 		/// </summary>
-		public static char PressedKey;
+		public static char PressedKey { get; private set; }
 		public static void Start()
         {
 			ThreadStart inputThreadStart = new ThreadStart(ReadInputThread);
