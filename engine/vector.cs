@@ -43,10 +43,10 @@ namespace ArmadilloEngine
 
 		public static Vector operator /(Vector a, float x) =>
 			a * (float)Math.Pow(x, -1);
-		public static Vector Up = new Vector(0, 1);
-		public static Vector Right = new Vector(1, 0);
-		public static Vector Left = new Vector(-1, 0);
-		public static Vector Down = new Vector(0, -1);
+		public static readonly Vector Up = new Vector(0, 1);
+		public static readonly Vector Right = new Vector(1, 0);
+		public static readonly Vector Left = new Vector(-1, 0);
+		public static readonly Vector Down = new Vector(0, -1);
 
 		/// <summary>
 		/// Rotates a vector drawn from the bottom right of the screen to the top right.
